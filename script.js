@@ -2,7 +2,7 @@ let choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
   let choice = choices[(Math.floor(Math.random() * choices.length))]; 
-  console.log("computer choice is: " + choice);
+  console.log("computer's choice was: " + choice);
   return choice;
 }
 
@@ -39,7 +39,6 @@ function playRound(playerSelection, computerSelection) {
   return feedback;
 }
 
-const playerSelection = "scissors";
-console.log("player selection is scissors");
-const computerSelection = getComputerChoice();
+let playerSelection = prompt("What would you like to play? (Rock, paper or scissors):").toLowerCase()
+let computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
