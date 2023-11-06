@@ -57,9 +57,19 @@ function showScores() {
   console.log("Computer Score: " + computerScore);
 }
 
+function showFinalWinner(playerScore, computerScore) {
+  let winner;
+  if (playerScore > computerScore) {
+    winner = "PLAYER";
+  } else {
+    winner = "COMPUTER";
+  }
+  console.log("Final winner is: " + winner + "!!!");
+}
+
 function game() {
   let playerSelection, computerSelection;
-  for (let round = 1; round <= 5; round++) {
+  while (!(playerScore === 5 || computerScore === 5)) {
     playerSelection = prompt("What would you like to play? (Rock, paper or scissors):").toLowerCase()
     console.log("your selection was: " + playerSelection);
     computerSelection = getComputerChoice();
@@ -67,6 +77,7 @@ function game() {
     addScoreToWinner(resultOfRound);
     showScores();
   }
+  showFinalWinner(playerScore, computerScore);
 }
 
 let playerScore = 0, computerScore = 0;
