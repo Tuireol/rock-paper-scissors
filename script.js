@@ -39,6 +39,14 @@ function playRound(playerSelection, computerSelection) {
   return feedback;
 }
 
-let playerSelection = prompt("What would you like to play? (Rock, paper or scissors):").toLowerCase()
-let computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  let playerSelection, computerSelection;
+  for (let round = 1; round <= 5; round++) {
+    playerSelection = prompt("What would you like to play? (Rock, paper or scissors):").toLowerCase()
+    console.log("your selection was: " + playerSelection);
+    computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
+
+game();
