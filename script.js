@@ -7,36 +7,54 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  let feedback;
+  let winnerOfRound;
   if (playerSelection === computerSelection) {
-    feedback = "tie";
+    winnerOfRound = "nobody";
   } else {
     if (playerSelection === "rock") {
       if (computerSelection === "paper") {
-        feedback = "you lost";
+        winnerOfRound = "computer";
       }
       if (computerSelection === "scissors") {
-        feedback = "you won";
+        winnerOfRound = "player";
       }
     }
     if (playerSelection === "paper") {
       if (computerSelection === "scissors") {
-        feedback = "you lost";
+        winnerOfRound = "computer";
       }
       if (computerSelection === "rock") {
-        feedback = "you won";
+        winnerOfRound = "player";
       }
     }
     if (playerSelection === "scissors") {
       if (computerSelection === "rock") {
-        feedback = "you lost";
+        winnerOfRound = "computer";
       }
       if (computerSelection === "paper") {
-        feedback = "you won";
+        winnerOfRound = "player";
       }
     }
   }
-  return feedback;
+  return winnerOfRound;
+}
+
+function addScoreToWinner(winnerOfRound) {
+  if (winnerOfRound === "tie") {
+    return;
+  } else {
+    if (winnerOfRound === "player") {
+      playerScore++;
+    }
+    if (winnerOfRound === "computer") {
+      computerScore++;
+    }
+  }
+}
+
+function showScores() {
+  console.log("Player Score: " + playerScore);
+  console.log("Computer Score: " + computerScore);
 }
 
 function game() {
@@ -45,8 +63,11 @@ function game() {
     playerSelection = prompt("What would you like to play? (Rock, paper or scissors):").toLowerCase()
     console.log("your selection was: " + playerSelection);
     computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    let resultOfRound = playRound(playerSelection, computerSelection);
+    addScoreToWinner(resultOfRound);
+    showScores();
   }
 }
 
+let playerScore = 0, computerScore = 0;
 game();
